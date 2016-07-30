@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <style>
+        .color {
+            color: blue !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div id="helloWorld">
+            <div class="row">
+                <div class="col col-xs-12">
+                    <h3>Hello World</h3>
+                    <p> {{ msg }} </p>
+                    <button type="button" class="btn btn-primary" @click="dizerOi">Dizer Oi</button>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col col-xs-12">
+                    <div>
+                        <h3>Computed property</h3>
+                        <input type="number" name="a" value="0" v-model="a" class="form-control" placeholder="digite o valor de a">
+                        <h4>
+                            <label class="label label-success">a = {{ a }}</label>
+                            <label for="" class="label label-primary">b = {{ b }}</label>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <h2>Two way</h2>
+        <div class="row" id="form1">
+            <div class="col col-xs-12">
+                <form class="form-horizontal"  v-show="exibirForm">
+                    <div class="form-group">
+                        <label for="nome" class="col col-xs-3 control-label">Nome</label>
+                        <div class="col col-xs-9">
+                            <input type="text" name="nome" value="" v-model="nome" class="form-control">
+                            <p class="help-block">{{ nome | capitalize }}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="opcoes" class="col col-xs-3 control-label">Opções</label>
+                        <div class="checkbox">
+                            <label for="none" v-for="option of options" class="checkbox-inline" :class="{ 'color' : option.checked }">
+                                <input type="checkbox" :checked="option.checked" v-on:change="selecionarCor(option, $event)">{{ option.color }}</input>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="none" class="col col-xs-3 control-label">Object For</label>
+                        <div class="col col-xs-9">
+                            <p v-for="value in user">{{ $key }} : {{ value }} </p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="none" class="col col-xs-3 control-label">Range For</label>
+                        <div class="col col-xs-9">
+                            <span v-for="i of 10">{{ i }}</span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col col-xs-12">
+                <button class="btn btn-info btn-block" @click="esconderForm"> {{ textButton }}</button>
+            </div>
+            <div class="col col-xs-12" v-if="exibirForm">
+                <button class="btn btn-success btn-block" @click="esconderForm"> Show </button>
+            </div>
+            <div class="col col-xs-12" v-else="exibirForm">
+                <button class="btn btn-danger btn-block" @click="esconderForm"> Hide </button>
+            </div>
+            <div class="col col-xs-12" v-else="exibirForm">
+                <a href="http://www.google.com.br" class="btn btn-link" @click.prevent="abrirGoogle">Exemplo de prenventDefault</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
