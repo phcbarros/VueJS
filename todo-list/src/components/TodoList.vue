@@ -49,7 +49,7 @@
         methods: {
             add: function(todo) {
                 if( !todo.name) return false;
-                this.list.push({ name: todo.name, done: false});
+                this.list.push({ name: todo.name, done: false });
                 this.todo.name = '';
             },
             onChecked: function(todo) {
