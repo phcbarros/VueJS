@@ -5,7 +5,7 @@
         <div class="form-group">
             <label for="none" class="col col-xs-2 control-label">Task</label>
             <div class="col col-xs-9">
-                <input type="text" class="form-control" v-model="todo.name">
+                <input type="text" class="form-control" v-model="todo.name" @keyup.enter="add(todo)">
             </div>
             <button type="button" class="btn btn-success" @click="add(todo)">Add</button>
         </div>
