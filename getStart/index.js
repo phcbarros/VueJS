@@ -16,6 +16,10 @@ new Vue({
         }
     }
 });
+//define o component
+var myComponent = Vue.extend({
+    template: '<div>Meu Componente</div>'
+});
 
 new Vue({
     el: '#form1',
@@ -64,5 +68,21 @@ new Vue({
     },
     created: function () {
         console.log('Created!');
+    }
+});
+
+
+
+var child = Vue.extend({
+    template: '<div> Componente Local</div>'
+})
+
+//registra globalmente 
+Vue.component('my-component', myComponent);
+
+new Vue({
+    el: "#components",
+    components: {
+        'child-component': child
     }
 });

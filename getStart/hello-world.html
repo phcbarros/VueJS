@@ -81,9 +81,16 @@
                 <button class="btn btn-danger btn-block" @click="esconderForm"> Hide </button>
             </div>
             <div class="col col-xs-12" v-else="exibirForm">
-                <a href="http://www.google.com.br" class="btn btn-link" @click.prevent="abrirGoogle">Exemplo de prenventDefault</button>
+                <a href="http://www.google.com.br" class="btn btn-link" @click.prevent="abrirGoogle">Exemplo de prenventDefault</a>
             </div>
         </div>
+        
+        <h3>Components</h3>
+        <div id="components">
+            <my-component></my-component>
+            <child-component></child-component>
+        </div>
+
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.js"></script>
