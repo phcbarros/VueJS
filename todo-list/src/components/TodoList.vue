@@ -11,14 +11,14 @@
         </div>
         
         <div class="form-group">
-            <label for="none" class="col col-xs-2 control-label" v-show="list.length > 0">Tasks</label>
+            <label for="none" class="col col-xs-2 control-label" v-show="list.length">Tasks</label>
             <div class="col col-xs-offset-2 col-xs-10">
                 <div class="checkbox" v-for="item of list ">
                     <label :class="{checked: item.done}">
                         <input type="checkbox" :checked="item.done" @change="onChecked(item)"> {{ item.name }}                       
                     </label>
                 </div>
-                
+                <p class="text-help" v-show="list.length">Total of tasks done: {{ countTodoDone }}</p>
             </div>
         </div>
     </div>
@@ -36,10 +36,19 @@
                 }
             }
         },
+        computed: {
+            countTodoDone: function() {
+                let count = 0;
+                this.list.forEach(function(todo) {
+                    if(todo.done) count++;
+                });
+
+                return count;
+            }
+        },
         methods: {
             add: function(todo) {
                 if( !todo.name) return false;
-
                 this.list.push({ name: todo.name, done: false});
                 this.todo.name = '';
             },
