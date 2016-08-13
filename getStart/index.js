@@ -16,10 +16,6 @@ new Vue({
         }
     }
 });
-//define o component
-var myComponent = Vue.extend({
-    template: '<div>Meu Componente</div>'
-});
 
 new Vue({
     el: '#form1',
@@ -71,7 +67,10 @@ new Vue({
     }
 });
 
-
+//define o component
+var myComponent = Vue.extend({
+    template: '<div>Meu Componente</div>'
+});
 
 var child = Vue.extend({
     template: '<div> Componente Local</div>'
